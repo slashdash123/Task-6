@@ -23,7 +23,7 @@
 int main(void)
 {
 	SET_BIT(RCC->AHB1ENR, RCC_AHB1ENR_GPIOBEN); 				// enable GPIOB
-	SET_BIT(RCC->APB1ENR, RCC_APB1ENR_TIM4EN); 					// enable TIM4
+	SET_BIT(RCC->APB1ENR, RCC_APB1ENR_TIM4EN); 				// enable TIM4
 
 	// pin enable PB6-PB9 to alternate function
 	CLEAR_BIT(GPIOB->MODER, GPIO_MODER_MODER6_0);
@@ -42,14 +42,14 @@ int main(void)
 	SET_BIT(GPIOB->AFR[1], 2<<4);
 
 	// CR1 register
-	CLEAR_BIT(TIM4->CR1, TIM_CR1_DIR);							// upcounting
-	CLEAR_BIT(TIM4->CR1, TIM_CR1_CMS); 							// 00: Edge-aligned mode. The counter counts up or down depending on the direction bit
+	CLEAR_BIT(TIM4->CR1, TIM_CR1_DIR);					// upcounting
+	CLEAR_BIT(TIM4->CR1, TIM_CR1_CMS); 					// 00: Edge-aligned mode. The counter counts up or down depending on the direction bit
 	(DIR).
 
 	// CCMR1 and CCMR2 register - mode register for channel 1, 2, 3, 4
 	// channel 1
-	CLEAR_BIT(TIM4-> CCMR1, TIM_CCMR1_CC1S); 					// nastavimmo channel 1 na output
-	SET_BIT(TIM4-> CCMR1, TIM_CCMR1_OC1PE); 					// TIMx_CCR1 enabled. Read/Write operations access the preload register
+	CLEAR_BIT(TIM4-> CCMR1, TIM_CCMR1_CC1S); 				// nastavimmo channel 1 na output
+	SET_BIT(TIM4-> CCMR1, TIM_CCMR1_OC1PE); 				// TIMx_CCR1 enabled. Read/Write operations access the preload register
 	CLEAR_BIT(TIM4-> CCMR1, TIM_CCMR1_OC1M_0);  				// PWM mode 1 (110) -> channel 1 is active as long as TIMx_CNT<TIMx_CCR1
 	SET_BIT(TIM4-> CCMR1, TIM_CCMR1_OC1M_1);
 	SET_BIT(TIM4-> CCMR1, TIM_CCMR1_OC1M_2);
@@ -88,7 +88,7 @@ int main(void)
 
 	// timer configure
 	TIM4 -> PSC = 15999;
-	TIM4 -> ARR = 4999;  									// 16MHZ / 16K * 5000 = 5s - period
+	TIM4 -> ARR = 4999;  							// 16MHZ / 16K * 5000 = 5s - period
 	TIM4 -> CCR1 = 1000;
 	TIM4 -> CCR2 = 2000;
 	TIM4 -> CCR3 = 3000;
@@ -97,7 +97,7 @@ int main(void)
 
 	SET_BIT(TIM4->EGR, TIM_EGR_UG);     					// update registers
 
-	CLEAR_BIT(TIM4->SR, TIM_SR_UIF);   						// clear flag
+	CLEAR_BIT(TIM4->SR, TIM_SR_UIF);   					// clear flag
 	SET_BIT(TIM4->CR1, TIM_CR1_CEN);    					// enable TIM4
 
 	while (1)
