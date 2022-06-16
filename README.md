@@ -12,4 +12,4 @@ Timer must be set to a period of 5 seconds and LED's must be switched on in the 
    	LED 3: turns on 3 seconds after the start of the period and stays turned on until the end of the period
    	LED 4: turns on 4 seconds after the start of the period and stays turned on until the end of the period
 
-Tools used: STM32F429I discovery board (Cortex M4), breadboard, wires, Kingbright 10-segment LED bar graph array
+Tools used: STM32F429I discovery board (Cortex M4), breadboard, wires, resistor, Kingbright 10-segment LED bar graph array
